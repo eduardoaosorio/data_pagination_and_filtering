@@ -43,7 +43,9 @@ header h2 {
 	margin-bottom: 25px;
 }
 
-
+.hidden {
+  display: none;
+}
 
 .student-search {
   display: flex;
