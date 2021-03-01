@@ -4,4 +4,4 @@ Techdegree project 2
 
 ## Description
 
-Small project written in plain JavaScript to display "pagination" and "search bar" functionality.
+Project written in plain JavaScript to display "pagination" and "search bar" functionality.
