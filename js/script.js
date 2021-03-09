@@ -62,37 +62,29 @@ function addPagination(list) {
  * @param {array} list - Array containing student objects
  */
 function searchStudents(searchInput, list) {
-   const matchesFound = [];
-   /* Note: matchesNotFound is used later on as a way to differentiate between 2 distinct scenarios: 
-   
-      1) No matches due to an empty search bar (we want to show all students in this case)
-      2) No matches because the input text didn't garner any match (we want to display a "no matches found" message)*/
-   let matchesNotFound = 0; 
-   for (let i = 0; i < list.length; i++) {
-      const studentFullName = `${list[i].name.first} ${list[i].name.last}`;
-      if (
-         searchInput.value.length !== 0 &&
-         studentFullName
-            .toLowerCase()
-            .includes(searchInput.value.toLowerCase())
-      ) {
-         matchesFound.push(list[i]);
-      } else if (searchInput.value.length !== 0) {
-         matchesNotFound++;
-      }
-   }
    const studentList = document.querySelector('.student-list');
    const linkList = document.querySelector('.link-list')
-   if (matchesNotFound === list.length) {
-      studentList.innerHTML = `
+   const matchesFound = [];
+   if (searchInput.value !== "") {
+      for (let i = 0; i < list.length; i++) {
+         const studentFullName = `${list[i].name.first} ${list[i].name.last}`;
+         if (
+            studentFullName.toLowerCase().includes(searchInput.value.toLowerCase())
+         ) {
+            matchesFound.push(list[i]);
+         }
+      }
+      if (matchesFound.length === 0) {
+         studentList.innerHTML = `
          <li class="student-item cf">
             <h3>No matches found</h3>
          </li>`;
          linkList.classList.add('hidden');
-   } else if (matchesFound.length !== 0) {
-      if (linkList.classList.contains('hidden')) linkList.classList.remove('hidden');
-      showPage(matchesFound, 1);
-      addPagination(matchesFound);
+      } else {
+         if (linkList.classList.contains('hidden')) linkList.classList.remove('hidden');
+         showPage(matchesFound, 1);
+         addPagination(matchesFound);
+      }
    } else {
       if (linkList.classList.contains('hidden')) linkList.classList.remove('hidden');
       showPage(list, 1);
