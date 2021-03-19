@@ -1,7 +1,11 @@
 # data_pagination_and_filtering
 
-Techdegree project 2
-
 ## Description
 
-Project written in plain JavaScript to display "pagination" and "search bar" functionality.
+Project written in plain JavaScript to show "pagination" and "search bar" functionality.
+
+## Technologies
+
+- JavaScript
+- HTML
+- CSS
